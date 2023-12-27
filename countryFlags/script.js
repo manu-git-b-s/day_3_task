@@ -1,12 +1,14 @@
 const url = "https://restcountries.com/v3.1/all";
 const countryData = [];
 
-const xhr = new XMLHttpRequest();
+const request = new XMLHttpRequest();
 
-xhr.open("GET", url);
-xhr.send();
+request.open("GET", url);
+request.send();
 
-xhr.onload = () => {
-  const parsedData = JSON.parse(xhr.response);
-  console.log(parsedData.map((country) => country.flags.png));
+request.onload = () => {
+  const parsedData = JSON.parse(request.response);
+  for (let i = 0; i < parsedData.length; i++) {
+    console.log(parsedData[i].flags.png);
+  }
 };
